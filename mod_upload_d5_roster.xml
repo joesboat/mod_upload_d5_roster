@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.4" client="site" method="upgrade">
+	<name>Upload D5 Roster</name>
+	<author>Joseph P. Gibson</author>
+	<creationDate>January 2019</creationDate>
+	<copyright>(C) 2018 Joseph P. Gibson. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>joe@joesboat.org</authorEmail>
+	<authorUrl>www.joesboat.org</authorUrl>
+	<version>1.0</version>
+	<description>Joomla Module version of import_roster.php.  Requires that a .csv file copy of the latest DB2000 Roster.  </description>
+	<files>
+		<filename module="mod_upload_d5_roster">mod_upload_d5_roster.php</filename>
+		<filename>index.html</filename>
+		<filename>helper.php</filename>
+		<folder>tmpl</folder>
+	</files>
+</extension>
