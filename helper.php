@@ -10,7 +10,9 @@
 
 // no direct access
 defined('_JEXEC') or die('Restricted access');
-
+jimport("usps/includes/routines");
+jimport("usps/tableD5VHQAB");
+jimport("usps/dbUSPSd5WebSites");
 class modUpload_D5_RosterHelper
 {
 //******************************************************************
@@ -49,6 +51,13 @@ static function import($fh,$everything){
 	}
 	return true;
 } // end of import - Loads new records from .csv file  
+//******************************************************************
+static function update_last_update_notice(){
+	// Store today's date in 'b_roster_update_date' variable in blobs table 
+	$websites = JoeFactory::getLibrary("USPSd5dbWebSites","local");
+	$blobs = $websites->getBlobsObject();
+	$blobs->store_roster_update_date();
+}
 } // end of class 
 //*********************************************************
 function buildArrayFromCSV($ln){

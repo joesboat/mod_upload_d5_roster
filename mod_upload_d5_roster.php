@@ -21,7 +21,7 @@ $session = JFactory::getSession();
 $user = JFactory::getUser();
 $error = '';
 $sqds = $vhqab->getSquadronObject();
-$year = $sqds->get_display_year('6243');
+$year = $vhqab->getSquadronDisplayYear('6243');
 log_it("import_roster.php started. ");
 if ($_FILES and ($_FILES['filename']['tmp_name']!='')){
 	$name = $_FILES['filename']['name'];
@@ -30,8 +30,10 @@ if ($_FILES and ($_FILES['filename']['tmp_name']!='')){
 		die("Unable to open?????");
 	log_it("Importing from DB2000 file - $name.");
 	$ok = modUpload_D5_RosterHelper::import($fh,isset($_POST['full_update']));
-	if ($ok) 
+	if ($ok){
+		modUpload_D5_RosterHelper::update_last_update_notice();
 		require(JModuleHelper::getLayoutPath('mod_upload_d5_roster','upload_success'));
+	}
 } else
 	require(JModuleHelper::getLayoutPath('mod_upload_d5_roster','upload_request'));
 
